@@ -1,6 +1,5 @@
 import { Flex ,Image,Text} from "@chakra-ui/react";
 import React from "react";
-import Search from "./Search";
 // import {defaultSearchMovies} from "../Components/Navbar"
 const sliderOne = [
   {
@@ -96,7 +95,7 @@ const Home = () => {
       <Image key={id} w={"20%"} p={"20px"} src={image} alt={id}/>
         )}
         </Flex>
-      <Search />
+
     </div>
   );
 };
