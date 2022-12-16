@@ -12,7 +12,7 @@ const Search = () => {
   const { query } = useContext(QueryContext);
   // console.log(query);
 
-  const getData = () => {
+  const getData = (query) => {
     if (query === "") {
       // console.log(query);
       axios
@@ -34,8 +34,8 @@ const Search = () => {
   };
 
   useEffect(() => {
-    getData();
-  }, [query]);
+    getData(query);
+  },[query]);
 
   return (
     <div>
@@ -50,9 +50,9 @@ const Search = () => {
         p={"20px"}
       >
         {data.map((el) => (
-          <Link to={`/movies/${el.imdbID}`}>
+          <Link to={`/movies/${el.imdbID}`} key={el.Poster + Date.now() + Math.random() * el.imdbID}>
           <Image h={{base:"400px",sm:"300px",lg:"200px"}} w={{base:"100%",sm:"100%",lg:"100%"}}
-            key={el.Poster + Date.now() + Math.random() * 123}
+            
             borderRadius={"20px"}
             src={el.Poster}
             alt={el.Poster}
