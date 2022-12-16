@@ -1,7 +1,17 @@
-// import axios from "axios";
+import React from "react";
 import logo from "../logo/logo-no-background.png";
 import {
+  useDisclosure ,
   Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  ModalFooter,
   Flex,
   Avatar,
   InputLeftElement,
@@ -28,7 +38,7 @@ import { QueryContext } from "../Context/QueryContextProvider";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const {handleQuery, closeQuery } = useContext(QueryContext);
+  const { handleQuery, closeQuery } = useContext(QueryContext);
   const navigate = useNavigate();
   // console.log(query)
   const handleSearch = (e) => {
@@ -40,8 +50,55 @@ export default function Navbar() {
     navigate("/search");
   };
 
-  const logoClick=()=>{
+  const logoClick = () => {
     navigate("/");
+  };
+
+  function InitialFocus() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const initialRef = React.useRef(null);
+    const finalRef = React.useRef(null);
+
+    return (
+      <>
+        <Button onClick={onOpen}>Open Modal</Button>
+        <Button ml={4} ref={finalRef}>
+          I'll receive focus on close
+        </Button>
+
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Create your account</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <FormControl>
+                <FormLabel>First name</FormLabel>
+                <Input ref={initialRef} placeholder="First name" />
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Last name</FormLabel>
+                <Input placeholder="Last name" />
+              </FormControl>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3}>
+                Save
+              </Button>
+              <Button onClick={onClose}>Cancel</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
   }
   // const [data,setData]=useState([]);
 
@@ -68,13 +125,12 @@ export default function Navbar() {
                 <Input
                   placeholder="Search Movies"
                   name="query"
-                  
                   onChange={(e) => {
                     handleSearch(e);
                   }}
-                  
                 />
-                <InputRightElement color="gray.500"
+                <InputRightElement
+                  color="gray.500"
                   children={<CloseIcon onClick={closeQuery} />}
                 />
               </InputGroup>
@@ -114,7 +170,7 @@ export default function Navbar() {
                   <MenuDivider />
                   <MenuItem>Your Servers</MenuItem>
                   <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Login</MenuItem>
+                  <MenuItem onClick={()=>InitialFocus}>Login</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
