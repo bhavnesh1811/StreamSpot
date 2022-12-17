@@ -5,6 +5,7 @@ import Home from '../Pages/Home';
 import SingleMoviePage from '../Pages/SingleMoviePage';
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
+import Video from '../Pages/Video';
 const AllRoutes = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const AllRoutes = () => {
             <Route path='/movies/:id' element={<SingleMoviePage/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
             <Route path='/signup' element={<Signup/>}></Route>
+            <Route path='/video/' element={<Video/>}></Route>
         </Routes>
 
     </div>
