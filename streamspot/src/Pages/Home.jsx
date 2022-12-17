@@ -1,5 +1,12 @@
-import { Box, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Stack, Text,Divider } from "@chakra-ui/react";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Freemode from "swiper";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MovieCard from "../Components/Card";
+
 // import {defaultSearchMovies} from "../Components/Navbar"
 const premieres = [
   {
@@ -459,7 +466,6 @@ const appleTv = [
       "https://is5-ssl.mzstatic.com/image/thumb/Video124/v4/c0/fe/b7/c0feb738-c4eb-b4eb-21f7-0ddcd32dfff6/89R30_EN_E1_artwork_CoverArt_en.lsr/738x416.webp",
     id: 15,
   },
-  
 ];
 
 const historicalDramas = [
@@ -538,59 +544,702 @@ const historicalDramas = [
       "https://is5-ssl.mzstatic.com/image/thumb/Video124/v4/c0/fe/b7/c0feb738-c4eb-b4eb-21f7-0ddcd32dfff6/89R30_EN_E1_artwork_CoverArt_en.lsr/738x416.webp",
     id: 15,
   },
-  
+];
+
+const comedy = [
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/GT66HoV8VJL1IZwaqos_TQ/738x416.webp",
+    id: 1,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/Auxgchkiva7ORjAQy9DP6w/738x416.webp",
+    id: 2,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/xq9mcYu6NXUtGcDJMMfc5w/738x416.webp",
+    id: 3,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/IyvoDdhWEjtSADaSryepIw/738x416.webp",
+    id: 4,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/BG3rKYXaPe9KkpZOZUjj_w/738x416.webp",
+    id: 5,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/XoJp7FzEyuPeFp3nZZMHJw/738x416.webp",
+    id: 6,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/dbEKo7rp5RGNNDrCbA7AUQ/738x416.webp",
+    id: 7,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/neRAWaMZZ5xVz4fnbFXJUA/738x416.webp",
+    id: 8,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/f5MpOY_Tglwyv9W9lwutqg/738x416.webp",
+    id: 9,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/le6mxqLNaXH47MHIH7stzw/738x416.webp",
+    id: 10,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/3iAbZQ4pznOpDRenkvOhNA/738x416.webp",
+    id: 11,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/eGnsZyr_h0ivXT0r4jbaew/738x416.webp",
+    id: 12,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/MrBBAvK_IzPmL1x5NOktag/738x416.webp",
+    id: 13,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/4npuGnQJGvWXSpLsEjgtXQ/738x416.webp",
+    id: 14,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/Video124/v4/c0/fe/b7/c0feb738-c4eb-b4eb-21f7-0ddcd32dfff6/89R30_EN_E1_artwork_CoverArt_en.lsr/738x416.webp",
+    id: 15,
+  },
+];
+
+const nonFiction = [
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/nnWkHXH4wyIt0sZovHx0tA/738x416.webp",
+    id: 1,
+  },
+  {
+    image:
+      "https://is4-ssl.mzstatic.com/image/thumb/rbA884KpTpFowJZ9t08rhw/738x416.webp",
+    id: 2,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/vPnF3gIE_xEMoXPI1SyluA/738x416.webp",
+    id: 3,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/XtNPMhEaBU1FKkk_QK-DeA/738x416.webp",
+    id: 4,
+  },
+  {
+    image:
+      "https://is4-ssl.mzstatic.com/image/thumb/q15eqXAa_XH-L0KIDkPBJA/738x416.webp",
+    id: 5,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Ulms3rha_yDCvDVlZyYUoQ/738x416.webp",
+    id: 6,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/h3TFbeh9Dz-zmR7hMf0Jcw/738x416.webp",
+    id: 7,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/6kPVBOcFxH5eWRVp9Vy9BA/738x416.webp",
+    id: 8,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/xW-YFC38wO80XQewW5Mn7A/738x416.webp",
+    id: 9,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/PzRfPYv8-A3pM1Uafiv1qQ/738x416.webp",
+    id: 10,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/KS0pkmrVEdO4uYZA5CpRZA/738x416.webp",
+    id: 11,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/VlRkLTAvxgEml_ZmCcmP1Q/738x416.webp",
+    id: 12,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/MP-C7FdZjq2Clj0BSxDbXg/738x416.webp",
+    id: 13,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/izP6zMmzs-m3VCjcOvM-DQ/738x416.webp",
+    id: 14,
+  },
+  {
+    image:
+      "https://is4-ssl.mzstatic.com/image/thumb/GwU4Qm-NLXeNi7M5bxpX-g/738x416.webp",
+    id: 15,
+  },
+];
+
+const feature = [
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/lgskq6n1xkUI5DOyA5tWWQ/738x416.webp",
+    id: 1,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/a_voEGGOjHGvUUhwrbStXQ/738x416.webp",
+    id: 2,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/CXnyehPcDHEauavhg0D79Q/738x416.webp",
+    id: 3,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/CUcDZ-At1_oNSxrwvuRguA/738x416.webp",
+    id: 4,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/_vkF4kzNiSCdmWsVNp0gjw/738x416.webp",
+    id: 5,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/vkRecJ7JSiYQecCMWMmzOA/738x416.webp",
+    id: 6,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/_dJgnWG8W30_qMRZYCEx-Q/738x416.webp",
+    id: 7,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/oANBVngpEJDvHRhdyozySA/738x416.webp",
+    id: 8,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/xwiVfxV1l5Tfy6-1uQ25_Q/738x416.webp",
+    id: 9,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/d6sprLP3-1W-OlED4ZlzOg/738x416.webp",
+    id: 10,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/McXcp2YSeuDh16Oph0nt6g/738x416.webp",
+    id: 11,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/zRCSBlp0LjwClRXsjyDNYQ/738x416.webp",
+    id: 12,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/DCj5c2CndQsWCj9zkGGa5Q/738x416.webp",
+    id: 13,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/8593WFOGVTTA1ncIGrL37g/738x416.webp",
+    id: 14,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/k-4X4dDwJrtXlsgr1VI_0w/738x416.webp",
+    id: 15,
+  },
+];
+
+const dramas = [
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/EuF6BWsgBeic_Ap2qeAGBQ/738x416.webp",
+    id: 1,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/gkWjLqLfF8Pahc6a6Udtxg/738x416.webp",
+    id: 2,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/PWsYggMXgU6kQrxaB3MZPQ/738x416.webp",
+    id: 3,
+  },
+  {
+    image:
+      "https://is4-ssl.mzstatic.com/image/thumb/C7vq4me467uKBCWL8QZA6g/738x416.webp",
+    id: 4,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/NuIOgsGJ11I4jRoa7-GbSA/738x416.webp",
+    id: 5,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/7SeRlnCzKlgeqrg6-ixkig/738x416.webp",
+    id: 6,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/78-I7VenST4ztZYfwMf6AQ/738x416.webp",
+    id: 7,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/AWDRdQz0nepFpnsUNiTDuw/738x416.webp",
+    id: 8,
+  },
+  {
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/kjrFHClZ3Bt-pT0MJnwdFw/738x416.webp",
+    id: 9,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/NHLksWLSZpTcIw36-n7vWA/738x416.webp",
+    id: 10,
+  },
+  {
+    image:
+      "https://is2-ssl.mzstatic.com/image/thumb/WTDZpzkQlaatpb1X4w9jZg/738x416.webp",
+    id: 11,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/Jj8T9VNcfHfMQ4fDwp31-Q/738x416.webp",
+    id: 12,
+  },
+  {
+    image:
+      "https://is4-ssl.mzstatic.com/image/thumb/XiXPs1AKOFQE7cq7AVlJeQ/738x416.webp",
+    id: 13,
+  },
+  {
+    image:
+      "https://is5-ssl.mzstatic.com/image/thumb/ewq0-5ZSairVdRtcg43s0w/738x416.webp",
+    id: 14,
+  },
+  {
+    image:
+      "https://is3-ssl.mzstatic.com/image/thumb/k-4X4dDwJrtXlsgr1VI_0w/738x416.webp",
+    id: 15,
+  },
 ];
 
 const Home = () => {
   return (
-    <Box padding={"20px"}>
+    <Box padding={"20px"}  >
       <Text margin={"20px"}>Watch Premieres for Free</Text>
-      <Flex w={"100%"} border={"5px solid red"} scrollMarginX={"200px"}>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          zIndex="-1"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
         {premieres.map(({ image, id }) => (
-          <Image key={id} w={"20%"} p={"20px"} src={image} alt={id} />
-        ))}
-      </Flex>
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+    
+      <Divider borderColor={"white.300"} margin={"20px"}/>
 
       <Text margin={"20px"}>Most Popular</Text>
-      <Flex w={"100%"} border={"5px solid red"} scrollMarginX={"200px"}>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
         {mostPopular.map(({ image, id }) => (
-          <Image key={id} w={"20%"} p={"20px"} src={image} alt={id} />
-        ))}
-      </Flex>
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
 
-      <Text>Watch Entire Seasons</Text>
-      <Flex w={"100%"} border={"5px solid red"} scrollMarginX={"200px"}>
+      <Divider borderColor={"white.300"} margin={"20px"}/>
+
+      <Text margin={"20px"}>Watch Entire Seasons</Text>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
         {seasons.map(({ image, id }) => (
-          <Image key={id} w={"20%"} p={"20px"} src={image} alt={id} />
-        ))}
-      </Flex>
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
 
       <Text margin={"20px"}>Latest Originals</Text>
       <Flex>
         {originals.map(({ image, id, Genre, Title, Info }) => (
-          <Stack w={"300px"} key={id}>
-            <Image w={"100%"} p={"20px"} src={image} alt={id} />
+          <Stack minW={"300px"} key={id}>
+            <Image p={"20px"} src={image} alt={id} />
             <Text>{Genre}</Text>
             <Text>{Title}</Text>
             <Text>{Info}</Text>
           </Stack>
         ))}
       </Flex>
+      <Divider borderColor={"white.300"}/>
 
-      <Text margin={"20px"} fontWeight={"800"}>Inclusive With StreamSpot</Text>
-      <Text margin={"15px"}>Watch unforgettable hits as a limited-time subscriber bonus.</Text>
-      <Flex w={"100%"} border={"5px solid red"} scrollMarginX={"200px"}>
+      <Text margin={"20px"} fontWeight={"800"}>
+        Inclusive With StreamSpot
+      </Text>
+      <Text margin={"15px"}>
+        Watch unforgettable hits as a limited-time subscriber bonus.
+      </Text>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
         {appleTv.map(({ image, id }) => (
-          <Image key={id} w={"20%"} p={"20px"} src={image} alt={id} />
-        ))}
-      </Flex>
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
 
       <Text margin={"20px"}>Historical Dramas</Text>
-      <Flex w={"100%"} border={"5px solid red"} scrollMarginX={"200px"}>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
         {historicalDramas.map(({ image, id }) => (
-          <Image key={id} w={"20%"} p={"20px"} src={image} alt={id} />
-        ))}
-      </Flex>
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
+
+      <Text margin={"20px"}>All Feature Films</Text>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
+        {feature.map(({ image, id }) => (
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
+
+      <Text margin={"20px"}>All Drama Series</Text>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
+        {dramas.map(({ image, id }) => (
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
+
+      <Text margin={"20px"}>All Comedy Series</Text>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
+        {comedy.map(({ image, id }) => (
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
+
+      <Text margin={"20px"}>All Nonfiction Series</Text>
+      <Swiper 
+          freeMode={true}
+          grabCursor={true}
+          modules={Freemode}
+          className="mySwiper"
+          // slidesPerView={5}
+          // spaceBetween={30}
+          breakpoints={{
+            0:{
+              slidesPerView:1,
+              spaceBetween:30,
+            },
+            480:{
+              slidesPerView:2,
+              spaceBetween:10,
+            },
+            768:{
+              slidesPerView:3,
+              spaceBetween:15,
+            },
+            1024:{
+              slidesPerView:4,
+              spaceBetween:15,
+            },
+            1280:{
+              slidesPerView:5,
+              spaceBetween:30,
+            },
+          }}
+        >
+          
+        {nonFiction.map(({ image, id }) => (
+          
+          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
+          ))}
+          </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"}/>
+      
     </Box>
   );
 };
