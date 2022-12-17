@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Stack, Text,Divider } from "@chakra-ui/react";
+import { Box, Text, Divider } from "@chakra-ui/react";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Freemode from "swiper";
@@ -6,6 +6,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MovieCard from "../Components/Card";
+import CardWithText from "../Components/CardWithText";
+import { useNavigate  } from "react-router-dom";
+
+
 
 // import {defaultSearchMovies} from "../Components/Navbar"
 const premieres = [
@@ -859,141 +863,182 @@ const dramas = [
 ];
 
 const Home = () => {
-  return (
-    <Box padding={"20px"}  >
-      <Text margin={"20px"}>Watch Premieres for Free</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          zIndex="-1"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
-        {premieres.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+  const navigate = useNavigate();
+
+ 
+
+  const movieClicked=(id)=>{
+
+    navigate("/video")
+  }
     
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+  return (
+    <Box padding={"20px"}>
+      <Text margin={"20px"}>Watch Premieres for Free</Text>
+      <Swiper
+      
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
+        {premieres.map(({ image, id }) => (
+          <SwiperSlide key={id} onClick={()=>movieClicked}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>Most Popular</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {mostPopular.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>Watch Entire Seasons</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {seasons.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>Latest Originals</Text>
-      <Flex>
-        {originals.map(({ image, id, Genre, Title, Info }) => (
-          <Stack minW={"300px"} key={id}>
-            <Image p={"20px"} src={image} alt={id} />
-            <Text>{Genre}</Text>
-            <Text>{Title}</Text>
-            <Text>{Info}</Text>
-          </Stack>
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
+        {originals.map(({ image, Genre, Title, Info,id }) => (
+          <SwiperSlide key={id} >
+            <CardWithText
+              image={image}
+              Genre={Genre}
+              Title={Title}
+              Info={Info}
+            />
+          </SwiperSlide>
         ))}
-      </Flex>
-      <Divider borderColor={"white.300"}/>
+      </Swiper>
+
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"} fontWeight={"800"}>
         Inclusive With StreamSpot
@@ -1001,245 +1046,244 @@ const Home = () => {
       <Text margin={"15px"}>
         Watch unforgettable hits as a limited-time subscriber bonus.
       </Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {appleTv.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>Historical Dramas</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {historicalDramas.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>All Feature Films</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {feature.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>All Drama Series</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {dramas.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>All Comedy Series</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {comedy.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
+      <Divider borderColor={"white.300"} margin={"20px"} />
 
       <Text margin={"20px"}>All Nonfiction Series</Text>
-      <Swiper 
-          freeMode={true}
-          grabCursor={true}
-          modules={Freemode}
-          className="mySwiper"
-          // slidesPerView={5}
-          // spaceBetween={30}
-          breakpoints={{
-            0:{
-              slidesPerView:1,
-              spaceBetween:30,
-            },
-            480:{
-              slidesPerView:2,
-              spaceBetween:10,
-            },
-            768:{
-              slidesPerView:3,
-              spaceBetween:15,
-            },
-            1024:{
-              slidesPerView:4,
-              spaceBetween:15,
-            },
-            1280:{
-              slidesPerView:5,
-              spaceBetween:30,
-            },
-          }}
-        >
-          
+      <Swiper
+        freeMode={true}
+        grabCursor={true}
+        modules={Freemode}
+        className="mySwiper"
+        // slidesPerView={5}
+        // spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {nonFiction.map(({ image, id }) => (
-          
-          <SwiperSlide key={id}><MovieCard key={id} id={id} image={image}/></SwiperSlide>
-          ))}
-          </Swiper>
+          <SwiperSlide key={id}>
+            <MovieCard image={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <Divider borderColor={"white.300"} margin={"20px"}/>
-      
+      <Divider borderColor={"white.300"} margin={"20px"} />
     </Box>
   );
 };
