@@ -7,9 +7,9 @@ import "swiper/css/free-mode";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MovieCard from "../Components/Card";
 import CardWithText from "../Components/CardWithText";
-import { useNavigate  } from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 // import {defaultSearchMovies} from "../Components/Navbar"
 const premieres = [
@@ -17,101 +17,141 @@ const premieres = [
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/AWDRdQz0nepFpnsUNiTDuw/738x416.webp",
     id: 1,
+    url: "https://www.youtube.com/watch?v=iJjp5p51Cow",
+    title: "The Morning Show",
   },
   {
     image:
       "https://is1-ssl.mzstatic.com/image/thumb/gkWjLqLfF8Pahc6a6Udtxg/738x416.webp",
     id: 2,
+    url: "https://www.youtube.com/watch?v=O9ZJChzPn0U",
+    title: "Slow Horses",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/xq9mcYu6NXUtGcDJMMfc5w/738x416.webp",
     id: 3,
+    url: "https://www.youtube.com/watch?v=e8YKi_05emo",
+    title: "Acapulca",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/WTDZpzkQlaatpb1X4w9jZg/738x416.webp",
     id: 4,
+    url: "https://www.youtube.com/watch?v=aH1FOkJys3Y",
+    title: "Black Bird",
   },
   {
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/Auxgchkiva7ORjAQy9DP6w/738x416.webp",
     id: 5,
+    url: "https://www.youtube.com/watch?v=BURYVH4V-WE",
+    title: "Mythic Quest",
   },
   {
     image:
       "https://is4-ssl.mzstatic.com/image/thumb/C7vq4me467uKBCWL8QZA6g/738x416.webp",
     id: 6,
+    url: "https://www.youtube.com/watch?v=-L7JUzwyNDs",
+    title: "The Mosquito Coast",
   },
   {
     image:
       "https://is1-ssl.mzstatic.com/image/thumb/NuIOgsGJ11I4jRoa7-GbSA/738x416.webp",
     id: 7,
+    url: "https://www.youtube.com/watch?v=IZUrhfCl0Xc",
+    title: "Bad Sisters",
   },
   {
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/EuF6BWsgBeic_Ap2qeAGBQ/738x416.webp",
     id: 8,
+    url: "https://www.youtube.com/watch?v=rJ_CMFSaOO8",
+    title: "Echo 3",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/PWsYggMXgU6kQrxaB3MZPQ/738x416.webp",
     id: 9,
+    url: "https://www.youtube.com/watch?v=9SSHhQRsYcM",
+    title: "Shantaram",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/GT66HoV8VJL1IZwaqos_TQ/738x416.webp",
     id: 10,
+    url: "https://www.youtube.com/watch?v=3u7EIiohs6U",
+    title: "Ted Lasso",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/78-I7VenST4ztZYfwMf6AQ/738x416.webp",
     id: 11,
+    url: "https://www.youtube.com/watch?v=xEQP4VVuyrY",
+    title: "Severance",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/7SeRlnCzKlgeqrg6-ixkig/738x416.webp",
     id: 12,
+    url: "https://www.youtube.com/watch?v=7Rg0y7NT1gU",
+    title: "See",
   },
   {
     image:
       "https://is1-ssl.mzstatic.com/image/thumb/kjrFHClZ3Bt-pT0MJnwdFw/738x416.webp",
     id: 13,
+    url: "https://www.youtube.com/watch?v=M4EOW9oqZ4k",
+    title: "For All Mankind",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/NHLksWLSZpTcIw36-n7vWA/738x416.webp",
     id: 14,
+    url: "https://www.youtube.com/watch?v=DlaHxL3mHAU",
+    title: "Invasion",
   },
   {
     image:
       "https://is4-ssl.mzstatic.com/image/thumb/XiXPs1AKOFQE7cq7AVlJeQ/738x416.webp",
     id: 15,
+    url: "https://www.youtube.com/watch?v=Hm_vHTy9IYA",
+    title: "Tehraan",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/qYEYYvFXN2O4zEuCcBSbjw/738x416.webp",
     id: 16,
+    url: "https://www.youtube.com/watch?v=X4QYV5GTz7c",
+    title: "Foundation",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/nnWkHXH4wyIt0sZovHx0tA/738x416.webp",
     id: 17,
+    url: "https://www.youtube.com/watch?v=lRl3J2GvvKk",
+    title: "The Problem With John Stewart",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/BG3rKYXaPe9KkpZOZUjj_w/738x416.webp",
     id: 18,
+    url: "https://www.youtube.com/watch?v=xCke0hXoCf8",
+    title: "Little America",
   },
   {
     image:
       "https://is4-ssl.mzstatic.com/image/thumb/L4WNJNV3nbmyAL6MQSeGuw/738x416.webp",
     id: 19,
+    url: "https://www.youtube.com/watch?v=XQfeoRLvfqU",
+    title: "Defending Jacob",
   },
   {
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/Jj8T9VNcfHfMQ4fDwp31-Q/738x416.webp",
     id: 20,
+    url: "https://www.youtube.com/watch?v=OwFbDHPQNcE",
+    title: "Servant",
   },
 ];
 const mostPopular = [
@@ -119,76 +159,108 @@ const mostPopular = [
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/GT66HoV8VJL1IZwaqos_TQ/738x416.webp",
     id: 1,
+    url: "https://www.youtube.com/watch?v=3u7EIiohs6U",
+    title: "Ted Lasso",
   },
   {
     image:
       "https://is1-ssl.mzstatic.com/image/thumb/gkWjLqLfF8Pahc6a6Udtxg/738x416.webp",
     id: 2,
+    url: "https://www.youtube.com/watch?v=O9ZJChzPn0U",
+    title: "Slow Horses",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/lgskq6n1xkUI5DOyA5tWWQ/738x416.webp",
     id: 3,
+    url: "https://www.youtube.com/watch?v=wafyhTpWpUs",
+    title: "Emancipation",
   },
   {
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/EuF6BWsgBeic_Ap2qeAGBQ/738x416.webp",
     id: 4,
+    url: "https://www.youtube.com/watch?v=rJ_CMFSaOO8",
+    title: "Echo 3",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/a_voEGGOjHGvUUhwrbStXQ/738x416.webp",
     id: 5,
+    url: "https://www.youtube.com/watch?v=tnAJntI3NNs",
+    title: "Spirited",
   },
   {
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/Auxgchkiva7ORjAQy9DP6w/738x416.webp",
     id: 6,
+    url: "https://www.youtube.com/watch?v=BURYVH4V-WE",
+    title: "Mythic Quest",
   },
   {
     image:
       "https://is4-ssl.mzstatic.com/image/thumb/C7vq4me467uKBCWL8QZA6g/738x416.webp",
     id: 7,
+    url: "https://www.youtube.com/watch?v=-L7JUzwyNDs",
+    title: "The Mosquito Coast",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/PWsYggMXgU6kQrxaB3MZPQ/738x416.webp",
     id: 8,
+    url: "https://www.youtube.com/watch?v=9SSHhQRsYcM",
+    title: "Shantaram",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/IZLh7W9XMi2iYTPqqFwRYg/738x416.webp",
     id: 9,
+    url: "https://www.youtube.com/watch?v=eGSilAxmJUs",
+    title: "A Charlie Brown Christmas",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/xq9mcYu6NXUtGcDJMMfc5w/738x416.webp",
     id: 10,
+    url: "https://www.youtube.com/watch?v=e8YKi_05emo",
+    title: "Acapulca",
   },
   {
     image:
       "https://is3-ssl.mzstatic.com/image/thumb/AWDRdQz0nepFpnsUNiTDuw/738x416.webp",
     id: 11,
+    url: "https://www.youtube.com/watch?v=iJjp5p51Cow",
+    title: "The Morning Show",
   },
   {
     image:
       "https://is5-ssl.mzstatic.com/image/thumb/7SeRlnCzKlgeqrg6-ixkig/738x416.webp",
     id: 12,
+
+    url: "https://www.youtube.com/watch?v=7Rg0y7NT1gU",
+    title: "See",
   },
   {
     image:
       "https://is2-ssl.mzstatic.com/image/thumb/78-I7VenST4ztZYfwMf6AQ/738x416.webp",
     id: 13,
+
+    url: "https://www.youtube.com/watch?v=xEQP4VVuyrY",
+    title: "Severance",
   },
   {
     image:
       "https://is1-ssl.mzstatic.com/image/thumb/NuIOgsGJ11I4jRoa7-GbSA/738x416.webp",
     id: 14,
+    url: "https://www.youtube.com/watch?v=IZUrhfCl0Xc",
+    title: "Bad Sisters",
   },
   {
     image:
       "https://is1-ssl.mzstatic.com/image/thumb/kjrFHClZ3Bt-pT0MJnwdFw/738x416.webp",
     id: 15,
+    url: "https://www.youtube.com/watch?v=M4EOW9oqZ4k",
+    title: "For All Mankind",
   },
 ];
 
@@ -864,19 +936,20 @@ const dramas = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const { authState } = useContext(AuthContext);
 
- 
+  const movieClicked = (url) => {
+    console.log(url);
+    authState.url = url;
+    {
+      authState.isAuth ? navigate("/video") : navigate("/login");
+    }
+  };
 
-  const movieClicked=(id)=>{
-
-    navigate("/video")
-  }
-    
   return (
     <Box padding={"20px"}>
       <Text margin={"20px"}>Watch Premieres for Free</Text>
       <Swiper
-      
         freeMode={true}
         grabCursor={true}
         modules={Freemode}
@@ -906,8 +979,8 @@ const Home = () => {
           },
         }}
       >
-        {premieres.map(({ image, id }) => (
-          <SwiperSlide key={id} onClick={()=>movieClicked}>
+        {premieres.map(({ image, id, url }) => (
+          <SwiperSlide key={id} onClick={() => movieClicked(url)}>
             <MovieCard image={image} />
           </SwiperSlide>
         ))}
@@ -946,8 +1019,8 @@ const Home = () => {
           },
         }}
       >
-        {mostPopular.map(({ image, id }) => (
-          <SwiperSlide key={id}>
+        {mostPopular.map(({ image, id,url }) => (
+          <SwiperSlide key={id} onClick={() => movieClicked(url)}>
             <MovieCard image={image} />
           </SwiperSlide>
         ))}
@@ -1026,8 +1099,8 @@ const Home = () => {
           },
         }}
       >
-        {originals.map(({ image, Genre, Title, Info,id }) => (
-          <SwiperSlide key={id} >
+        {originals.map(({ image, Genre, Title, Info, id }) => (
+          <SwiperSlide key={id}>
             <CardWithText
               image={image}
               Genre={Genre}

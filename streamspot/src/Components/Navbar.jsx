@@ -1,31 +1,14 @@
 import React from "react";
 import logo from "../logo/logo-no-background.png";
 import {
-  useDisclosure ,
   Box,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  FormControl,
-  FormLabel,
-  ModalFooter,
   Flex,
-  Avatar,
   InputLeftElement,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   InputGroup,
   useColorModeValue,
   Stack,
   useColorMode,
-  Center,
   Image,
   Input,
   InputRightElement,
@@ -33,14 +16,18 @@ import {
 import { MoonIcon, SearchIcon, SunIcon, CloseIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { BiUserPlus } from "react-icons/bi";
+import { AiOutlineLogout } from "react-icons/ai";
 
 import { QueryContext } from "../Context/QueryContextProvider";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { handleQuery, closeQuery } = useContext(QueryContext);
   const navigate = useNavigate();
-  // console.log(query)
+  const {authState,logOutUser}=useContext(AuthContext);
+
   const handleSearch = (e) => {
     setTimeout(() => {
       // console.log("check");
@@ -54,52 +41,10 @@ export default function Navbar() {
     navigate("/");
   };
 
-  function InitialFocus() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
-    const initialRef = React.useRef(null);
-    const finalRef = React.useRef(null);
-
-    return (
-      <>
-        <Button onClick={onOpen}>Open Modal</Button>
-        <Button ml={4} ref={finalRef}>
-          I'll receive focus on close
-        </Button>
-
-        <Modal
-          initialFocusRef={initialRef}
-          finalFocusRef={finalRef}
-          isOpen={isOpen}
-          onClose={onClose}
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Create your account</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <FormControl>
-                <FormLabel>First name</FormLabel>
-                <Input ref={initialRef} placeholder="First name" />
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel>Last name</FormLabel>
-                <Input placeholder="Last name" />
-              </FormControl>
-            </ModalBody>
-
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3}>
-                Save
-              </Button>
-              <Button onClick={onClose}>Cancel</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    );
+  const callLogin=()=>{
+    navigate("/login");
   }
+
   // const [data,setData]=useState([]);
 
   return (
@@ -140,39 +85,24 @@ export default function Navbar() {
               <Button color="gray.500" onClick={toggleColorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
-
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  <Avatar
-                    size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
-                  />
-                </MenuButton>
-                <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={"2xl"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem onClick={()=>InitialFocus}>Login</MenuItem>
-                </MenuList>
-              </Menu>
+              {authState.token===null?
+              <Button
+                leftIcon={<BiUserPlus />}
+                colorScheme="teal"
+                variant="solid"
+                  onClick={callLogin}
+              >
+                SignIn
+              </Button>:
+              <Button
+              leftIcon={<AiOutlineLogout />}
+              colorScheme="teal"
+              variant="solid"
+                onClick={logOutUser}
+            >
+              {authState.username || "Logout"}
+            </Button>
+}
             </Stack>
           </Flex>
         </Flex>

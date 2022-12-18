@@ -1,13 +1,14 @@
 import React from 'react'
+import { useContext } from 'react'
 import ReactPlayer from "react-player"
-import { useParams } from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContextProvider'
 
 const Video = () => {
-    const param=useParams();
-    console.log(param)
+    const {authState}=useContext(AuthContext);
+    console.log(authState.url)    
   return (
     <div className='videoPlayer'>
-        <ReactPlayer url="https://www.youtube.com/watch?v=wafyhTpWpUs"/>
+        <ReactPlayer url={`${authState.url}`} controls={true} />
     </div>
   )
 }

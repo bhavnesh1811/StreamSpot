@@ -9,21 +9,28 @@ const AuthContextProvider = ({children}) => {
     const initState={
         isAuth:false,
         token:null,
+        username:null,
+        loading:false,
+        url:null,
         
     }
 
     const[authState,setAuthState] = useState(initState);
 
 
-    const loginUser=(tokenNo)=>{
-        setAuthState({...authState,isAuth:true,token:tokenNo})
+    const loginUser=(tokenNo,username)=>{
+        setAuthState({isAuth:true,token:tokenNo,username:username})
     }
 
     const logOutUser=()=>{
-        setAuthState({...authState,initState})
+        setAuthState(initState)
+    }
+
+    const loadingStatus=()=>{
+      setAuthState({...authState,loading:true})
     }
   return (
-    <AuthContext.Provider value={{authState,loginUser,logOutUser}}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{authState,loginUser,logOutUser,loadingStatus}}>{children}</AuthContext.Provider>
   )
 }
 
