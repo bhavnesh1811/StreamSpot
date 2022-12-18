@@ -15,7 +15,7 @@ const Search = () => {
   const {authState}=useContext(AuthContext);
   // console.log(query);
 
-  const getData = (query) => {
+  const getData = async(query) => {
     if (query === "") {
       // console.log(query);
       authState.loading=true;
@@ -31,7 +31,7 @@ const Search = () => {
     } else {
       authState.loading=true;
       axios
-        .get(`http://www.omdbapi.com/?i=tt3896198&apikey=fc759f3b&s=${query}`)
+        .get(`https://www.omdbapi.com/?i=tt3896198&apikey=fc759f3b&s=${query}`)
         .then((res) => {
           // console.log(res.data);
           setData(res.data.Search);

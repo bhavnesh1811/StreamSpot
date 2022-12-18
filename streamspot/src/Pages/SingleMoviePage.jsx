@@ -10,7 +10,7 @@ const SingleMoviePage = () => {
   const getData = (id) => {
     // console.log(id);
     axios
-      .get(`http://www.omdbapi.com/?i=${id}&apikey=fc759f3b`)
+      .get(`https://www.omdbapi.com/?i=${id}&apikey=fc759f3b`)
       .then((res) => {
         // console.log(res.data);
         setData(res.data);
