@@ -4,7 +4,6 @@ import Search from '../Pages/Search';
 import Home from '../Pages/Home';
 import SingleMoviePage from '../Pages/SingleMoviePage';
 import Login from '../Pages/Login';
-import Signup from '../Pages/Signup';
 import Video from '../Pages/Video';
 const AllRoutes = () => {
   return (
@@ -14,7 +13,6 @@ const AllRoutes = () => {
             <Route path='/search' element={<Search/>}></Route>
             <Route path='/movies/:id' element={<SingleMoviePage/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
-            <Route path='/signup' element={<Signup/>}></Route>
             <Route path='/video/' element={<Video/>}></Route>
         </Routes>
 
