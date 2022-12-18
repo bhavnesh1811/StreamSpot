@@ -49,7 +49,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "black")} px={6}>
+      <Box bg={useColorModeValue("gray.400", "black")} px={6}>
         <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <Image style={{ height: "80px" }} src={logo} onClick={logoClick} />
