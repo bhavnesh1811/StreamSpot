@@ -6,7 +6,7 @@ For search functinality the data is added and deployed on render.com as a JSON s
 
 Server Link:-https://streamspot.onrender.com
 
-This project is an individual project which took around five days on continuos efforts.The tech stack used in this project is around 95% Javascript(React Library) and 5% of both HTML and CSS.
+This project is an individual project which took around five days of continuos hard work and efforts.The tech stack used in this project is around 95% Javascript(React Library) and 5% of both HTML and CSS.
 
 Netlify Link:-https://streamspot.netlify.app/
 
