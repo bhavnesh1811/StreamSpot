@@ -18,7 +18,7 @@ const premieres = [
       "https://is3-ssl.mzstatic.com/image/thumb/AWDRdQz0nepFpnsUNiTDuw/738x416.webp",
     id: 1,
     url: "https://www.youtube.com/watch?v=iJjp5p51Cow",
-    title: "The Morning Show",
+    title: "The Morning Show.",
   },
   {
     image:

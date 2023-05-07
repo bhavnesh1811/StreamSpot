@@ -26,7 +26,7 @@ export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { handleQuery, closeQuery } = useContext(QueryContext);
   const navigate = useNavigate();
-  const {authState,logOutUser}=useContext(AuthContext);
+  const { authState, logOutUser } = useContext(AuthContext);
 
   const handleSearch = (e) => {
     setTimeout(() => {
@@ -41,9 +41,9 @@ export default function Navbar() {
     navigate("/");
   };
 
-  const callLogin=()=>{
+  const callLogin = () => {
     navigate("/login");
-  }
+  };
 
   // const [data,setData]=useState([]);
 
@@ -85,24 +85,25 @@ export default function Navbar() {
               <Button color="gray.500" onClick={toggleColorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
-              {authState.token===null?
-              <Button
-                leftIcon={<BiUserPlus />}
-                colorScheme="teal"
-                variant="solid"
+              {authState.token === null ? (
+                <Button
+                  leftIcon={<BiUserPlus />}
+                  colorScheme="teal"
+                  variant="solid"
                   onClick={callLogin}
-              >
-                SignIn
-              </Button>:
-              <Button
-              leftIcon={<AiOutlineLogout />}
-              colorScheme="teal"
-              variant="solid"
-                onClick={logOutUser}
-            >
-              {authState.username || "Logout"}
-            </Button>
-}
+                >
+                  SignIn
+                </Button>
+              ) : (
+                <Button
+                  leftIcon={<AiOutlineLogout />}
+                  colorScheme="teal"
+                  variant="solid"
+                  onClick={logOutUser}
+                >
+                  {authState.username || "Logout"}
+                </Button>
+              )}
             </Stack>
           </Flex>
         </Flex>
