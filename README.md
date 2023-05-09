@@ -17,7 +17,7 @@
  - `Login`
  - `Search Page`
  - `User can watch movie trailer after Login`
- - `Responsive` 
+ - `Responsive.` 
 
 ### :chipmunk: Please feel free for any suggestions, questions or contributions. 
 ### Thank you 
