@@ -33,7 +33,7 @@ export const STICKY="sticky"
 
 //Font Weight
 export const BOLD = "bold"
-// export const ITALIC = "italic"
+export const ITALIC = "italic"
 // export const NORMAL = "normal"
 
 //GridTempletColumns
